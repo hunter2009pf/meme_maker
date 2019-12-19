@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'homepage.dart';
-import 'login.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'play together',
+      title: 'meme maker',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -23,16 +23,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: AppBar(title: Text("家教 1 vs 1"),centerTitle: true,),
         body: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                colorFilter: ColorFilter.mode(Color.fromARGB(50, 100, 100, 100), BlendMode.darken),
-                image: AssetImage("assets/teacher.jpg"),
-                fit: BoxFit.cover
-              )
-            ),
-            child: Login()
+            child: HomePage()
         ),
       ),
       routes: {

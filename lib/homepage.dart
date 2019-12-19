@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'pages/math.dart';
-import 'pages/language.dart';
-import "pages/coding.dart";
-import 'pages/user.dart';
+import 'pages/Producer.dart';
+import 'pages/Ranking.dart';
+import 'pages/LocalWarehouse.dart';
 
 class HomePage extends StatefulWidget{
   @override
@@ -17,7 +16,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   @override
   void initState(){
-      tabCtrl = new TabController(length: 4, vsync: this);
+      tabCtrl = new TabController(length: 3, vsync: this);
   }
 
   @override
@@ -27,10 +26,9 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
       body: TabBarView(
         controller: tabCtrl,
         children: <Widget>[
-          Math(),
-          Language(),
-          Coding(),
-          User()
+          Producer(),
+          Ranking(),
+          LocalWarehouse()
         ],
       ),
       bottomNavigationBar: TabBar(
@@ -39,20 +37,16 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         unselectedLabelColor: Colors.black26,
         tabs: <Widget>[
           Tab(
-            text: "数学",
-            icon: Icon(Icons.map),
+            text: "制造",
+            icon: Icon(Icons.image),
           ),
           Tab(
-            text: "英语",
-            icon: Icon(Icons.chat),
+            text: "排行",
+            icon: Icon(Icons.playlist_add_check),
           ),
           Tab(
-            text:"编程",
-            icon: Icon(Icons.code),
-          ),
-          Tab(
-            text: "用户",
-            icon: Icon(Icons.people),
+            text: "仓库",
+            icon: Icon(Icons.storage),
           )
         ],
       ),
