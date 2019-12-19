@@ -46,7 +46,11 @@ class _ProducerState extends State<Producer>{
         ),
         Row(
           children: <Widget>[
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            ),
             DropdownButton<int>(
+              hint: Text("文字大小"),
               value: fontSize,
               icon: Icon(Icons.arrow_downward),
               iconSize: 24,
@@ -62,11 +66,11 @@ class _ProducerState extends State<Producer>{
                 });
               },
               items: <DropdownMenuItem<int>>[
-                DropdownMenuItem(value: 12),
-                DropdownMenuItem(value: 14),
-                DropdownMenuItem(value: 16),
-                DropdownMenuItem(value: 18),
-                DropdownMenuItem(value: 20)
+                DropdownMenuItem(value: 12, child: Text("12")),
+                DropdownMenuItem(value: 14, child: Text("14")),
+                DropdownMenuItem(value: 16, child: Text("16")),
+                DropdownMenuItem(value: 18, child: Text("18")),
+                DropdownMenuItem(value: 20, child: Text("20"))
               ],
             )
           ],
