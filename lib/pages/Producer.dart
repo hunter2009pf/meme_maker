@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Producer extends StatefulWidget{
   @override
@@ -12,15 +13,19 @@ class _ProducerState extends State<Producer>{
   int fontSize = 12;
   String fontColor = "black";
   String wordPosition = "top";
+  var _imgPath;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+        ),
         SizedBox(
             width: 350,
-            height: 350,
-            child: Image.asset("assets/test.jpg"),
+            height: 251,
+            child: _ImageView(_imgPath),
           ),
         Row(
           children: <Widget>[
@@ -29,16 +34,19 @@ class _ProducerState extends State<Producer>{
             ),
             RaisedButton(
               child: Text("照相机"),
-              onPressed: (){},
+              onPressed: _takePhoto,
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
             ),
             RaisedButton(
               child: Text("相册"),
-              onPressed: (){},
+              onPressed: _openGallery,
             )
           ],
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
         ),
         TextField(
           controller: textCtrl,
@@ -134,7 +142,7 @@ class _ProducerState extends State<Producer>{
           ],
         ),
         Padding(
-          padding: const EdgeInsets.fromLTRB(0,30,0,0),
+          padding: const EdgeInsets.fromLTRB(0,50,0,0),
           child: Row(
             children: <Widget>[
               Padding(
@@ -165,4 +173,29 @@ class _ProducerState extends State<Producer>{
     );
   }
 
+  Widget _ImageView(imgPath){
+    if(imgPath == null){
+      return Center(
+        child: Text("请选择图片或拍照"),
+      );
+    }else{
+      return Image.file(imgPath);
+    }
+  }
+
+  void _takePhoto() async{
+    var image = await ImagePicker.pickImage(source: ImageSource.camera);
+
+    setState(() {
+      _imgPath=image;
+    });
+  }
+
+  void _openGallery() async{
+    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      _imgPath = image;
+    });
+  }
 }
